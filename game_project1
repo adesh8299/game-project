@@ -1,4 +1,6 @@
 #include<iostream>
+#include<conio.h>
+#include<windows.h>
 using namespace std;
 enum eDirection { STOP=0,LEFT,RIGHT,UP,DOWN};
 eDirection dira;
@@ -8,8 +10,8 @@ void Draw();
 void Input();
 void Logic();
 void Logic2();
-const int width=5;
-const int height=5;
+const int width=20;
+const int height=20;
 int x,y, fruitX, fruitY,score;
 int tailx[100],taily[100];
 int ntail;
@@ -32,7 +34,7 @@ int main()
 			Draw();
 			Input();
 			Logic();
-			_sleep(10);
+			_sleep(30);
 		}
 		break;
 	case 'H':
@@ -56,16 +58,20 @@ int main()
 }
 void setup()
 {
+	gameOver=false;
 	dira=STOP;
 	x=width/2;
-	y=height
+	y=height/2;
+	fruitX=rand()%width;
+	fruitY=rand()%height;
+	score=0;
 }
 void Draw()
 {
 	system("cls");
 	cout<<"\n\t\t      :SNAKE GAME:\n";
 	cout<<"\t\t";
-	for(int i=0;i<width;i++)
+	for(int i=0;i<width-8;i++)
 	{
 		cout<<"||";
 	}
